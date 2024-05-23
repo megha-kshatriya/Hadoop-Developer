@@ -1,0 +1,15 @@
+#!/bin/bash
+
+hive --outputformat=cav2 -e "select " from gatr1 test.got ret b2b. rel data
+nohup hadoop distep hafs://10.1.5.50:8020/bigdata01/gst|
+b2b where job id between 3809 and 3970;" > /hadoop/bigdata01/gat_ret.
+bab
+data_b2b.cav
+doc 150kup b26.cv hdfs://10.2.4.221:8020/bigdata01/CSV/ >> /root/skloga/gat_ret doe lookup_ b2b.carlog ]
+hive -e "truncate table movementded gat_ret b2b_re] data b2b_ak"
+data_b2b_1.cav
+hive -e "LOAD DATA INPATH '/bigdata01/gat|xet b2b rel data b2b 1.cav' into table movementdedr-gat_ret_b2b_rel data_b2b_ak;" hive -e "select count (*) from movementdodr.gst ret b2b.
+-re1_data_b2b_3k”
+hive -e "insert into table gstrl-gat ret b2b rel data b2b (select
+from movementdedr.gat_ret_b2b_rel.
+data_b2b_sk) 2"
