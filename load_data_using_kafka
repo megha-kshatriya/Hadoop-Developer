@@ -1,0 +1,71 @@
+To create a system where you can put sv data on a server, consume it in real-time using Kafka, and then put it into a table, you'll need to break this down into several steps:
+Set up Kafka: Install Kafka and Zookeeper, create topics, and configure producers and consumers.
+Server to Kafka Producer: Write code to read CSV files from the server and send each row as a message to Kafka.
+Kafka Consumer: Write a Kafka consumer to receive messages from the Kafka topic.
+Database Integration: Write code to parse the CV data and insert it into a database table.
+Here's an outline of how you could achieve this using Python and the confluent _kafka library for Kafka integration and pandas for SV parsing:
+
+python
+Copy code
+from confluent_kafka import Producer, Consumer import pandas as pd import json
+from sqlalchemy import create_engine
+# Kafka configurations
+bootstrap_servers = 'localhost: 9092'
+topic = 'csv _topic'
+# Database configurations
+do_username = 'username'
+_password = 'password'
+db _host = 'localhost'
+db name = 'database name'
+table_name = 'csv_table'
+# Kafka Producer
+def csv_to_kafka_producer(csv_file):
+producer = Producer ({'bootstrap servers': bootstrap_servers})
+df = pd.read_csv(csv_file)
+for → row in df.iterrows():
+producer. produce(topic, json.dumps (row.to dict()))
+producer. flush()
+# Kafka Consumer
+def kafka_to _database_consumer):
+consumer = Consumer((
+' bootstrap,servers': bootstrap_servers,
+
+
+# Kafka Consumer
+def kafka_to_database_consumer (:
+consumer
+= Consumer ({
+" bootstrap.servers': bootstrap_servers,
+'group.id':
+"osv
+group'
+'auto.offset.reset": earliest'
+consumer. subscribe([topicl)
+engine = create_engine(f*postgresql://{db_username}: {db_password}@{db_host}/{db_name}")
+for msg in consumer:
+data = json. loads(msg-value() -decode ('utf-8' ))
+df = pd.DataFrame(data, index=[0])
+df. to_sql (table_name, engine, if_exists="append*, index=False)
+# Main function
+if
+name
+1=
+main
+# Assuming you have a sv file on the server
+sv_file_path = 'path_to your_csv_file.csv'
+
+# Main function
+if
+_name
+==
+main
+# Assuming you have a CV file on the server
+csv_file.
+_path = path
+_to your _csv_file.csv'
+
+# Step 1: Send CSV data to Kafka
+csv_to_kafka_producer (csv_file_path)
+# Step 2: Consume CSV data from Kafka and put it into the database
+kafka to database
+_consumer ( )
